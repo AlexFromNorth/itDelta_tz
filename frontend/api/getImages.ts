@@ -2,12 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Images } from "../types/types";
 
-export const fetchImages = createAsyncThunk(
+export const getImages = createAsyncThunk(
     'images/getImages',
     async (_, { rejectWithValue }) => {
       try {
         const { data } = await axios.get<Images>(
-          'https://jsonplaceholder.typicode.com/posts',
+          'http://test-backend.itdelta.agency/api/images',
           {
             headers: {
               Accept: 'application/json',

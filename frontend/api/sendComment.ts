@@ -1,32 +1,18 @@
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
-// import { Element } from "../types/types";
-// import { updateElementReducer } from "../store/elementsSlice";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { Comment } from "../types/types";
+import { addComment } from "../store/imageSlice";
 
-// export const updateElement = createAsyncThunk<void, Element>(
-//   'elements/updateElement',
-//   async (element, { rejectWithValue, dispatch }) => {
-//     // Обновляем состояние в redux
-//     dispatch(updateElementReducer(element));
-//     try {
-//       const response = await axios.put(
-//         `https://jsonplaceholder.typicode.com/posts/${element.id}`,
-//         {
-//           id: element.id,
-//           title: element.title,
-//           body: element.body,
-//           userId: element.userId,
-//         },
-//         {
-//           headers: {
-//             Accept: 'application/json',
-//             'Content-type': 'application/json; charset=UTF-8',
-//           },
-//         }
-//       );
-      
-//     } catch (error: any) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const sendComment = createAsyncThunk(
+    'comment/sendComment',
+    async ({ id, comment }: { id: number; comment: Comment }, { rejectWithValue, dispatch }) => {
+      dispatch(addComment(comment)); 
+      try {
+        await axios.post(`http://test-backend.itdelta.agency/api/image/${id}/comments`, comment);
+        return { ...comment, id: comment.id }; 
+      } catch (error: any) {
+        return rejectWithValue(error.message);
+      }
+    }
+  );
+  

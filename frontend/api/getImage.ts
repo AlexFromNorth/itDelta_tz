@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Images } from "../types/types";
+import { Image } from "../types/types";
 
-export const fetchImages = createAsyncThunk(
+export const getImage = createAsyncThunk(
     'image/getImage',
-    async (_, { rejectWithValue }) => {
+    async (id: number, { rejectWithValue }) => {
       try {
-        const { data } = await axios.get<Images>(
-          'https://jsonplaceholder.typicode.com/posts',
+        const { data } = await axios.get<Image>(
+          `http://test-backend.itdelta.agency/api/image/${id}`,
           {
             headers: {
               Accept: 'application/json',
@@ -19,4 +19,4 @@ export const fetchImages = createAsyncThunk(
         return rejectWithValue(error.message);
       }
     }
-  );
+);

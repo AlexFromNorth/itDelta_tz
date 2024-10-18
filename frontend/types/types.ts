@@ -1,15 +1,14 @@
-// arr images []
+import { ReactNode } from "react";
+
 export type Images = {
   id: number;
   image: string;
 }[];
 
-// export type GetElementsResponse = Element[];
-
-type Comment = {
-  id: number;
-  author: string;
-  text: string;
+export type ImagesState = {
+  images: Images;
+  loading: boolean;
+  error: string | null;
 };
 
 export type Image = {
@@ -19,10 +18,27 @@ export type Image = {
   comments: Comment[];
 };
 
-export type ImagesState = {
-    images: Images;
-    loading: boolean;
-    error: string | null;
-  };
+export type ImageState = {
+  image: Image | null;
+  loading: boolean;
+  error: string | null;
+};
+
+export type Comment = {
+  id: number;
+  author: string;
+  text: string;
+};
+
+export type CommentsState = {
+  comment: Comment[];
+  loading: boolean;
+  error: string | null;
+};
+
+
+export interface ProvidersProps {
+  children: ReactNode; // Укажите тип для children
+}
 
 // export type CartElement = (el: Element) => ReactElement;

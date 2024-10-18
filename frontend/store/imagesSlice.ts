@@ -1,7 +1,7 @@
 // import { updateElement } from './../utils/utils';
 import { createSlice } from "@reduxjs/toolkit";
 import { ImagesState } from "../types/types";
-import { fetchImages } from "../api/getImages";
+import { getImages } from "../api/getImages";
 
 
 const initialState: ImagesState = {
@@ -16,15 +16,15 @@ const imagesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchImages.pending, (state) => {
+      .addCase(getImages.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchImages.fulfilled, (state, action) => {
+      .addCase(getImages.fulfilled, (state, action) => {
         state.loading = false;
         state.images = action.payload;
       })
-      .addCase(fetchImages.rejected, (state, action) => {
+      .addCase(getImages.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
