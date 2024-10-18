@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ImageState, Comment } from "../types/types"; // Убедитесь, что вы импортируете Comment
+import { ImageState, Comment } from "../types/types";
 import { getImage } from "../api/getImage";
 import { sendComment } from "../api/sendComment";
 
@@ -32,23 +32,24 @@ const imageSlice = createSlice({
         state.error = action.payload as string;
       })
       .addCase(sendComment.pending, (state) => {
-        state.loading = true;
+        // state.loading = true;
         state.error = null;
       })
       .addCase(
         sendComment.fulfilled,
         (state, action: PayloadAction<Comment & { id: number }>) => {
-          state.loading = false;
-          state.image?.comments.push(action.payload);
+          // state.loading = false;
+          // state.image?.comments.push(action.payload);
+          // state.image?.comments = (action.payload);
         }
       )
       .addCase(sendComment.rejected, (state, action) => {
-        state.loading = false;
+        // state.loading = false;
         state.error = action.payload as string;
       });
   },
 });
 
-export const { addComment } = imageSlice.actions; // Не забудьте экспортировать действие
+export const { addComment } = imageSlice.actions;
 
 export default imageSlice.reducer;

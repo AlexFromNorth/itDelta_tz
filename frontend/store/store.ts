@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import imagesReducer from './imagesSlice';
 import imageReducer from './imageSlice';
-import commentsReducer from './commentsSlice';
+// import commentsReducer from './commentsSlice';
 
 export const store = configureStore({
   reducer: {
     images: imagesReducer,
     image: imageReducer,
-    comment: commentsReducer,
+    // comment: commentsReducer,
   },
 });
 

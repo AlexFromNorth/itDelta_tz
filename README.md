@@ -3,3 +3,7 @@
 
 
  next tailwind axios react typescript
+
+
+
+              comment: { id, author: "User", text: "Your comment" },

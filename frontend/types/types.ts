@@ -38,7 +38,13 @@ export type CommentsState = {
 
 
 export interface ProvidersProps {
-  children: ReactNode; // Укажите тип для children
+  children: ReactNode; 
 }
 
 // export type CartElement = (el: Element) => ReactElement;
+
+
+
+export type Crutch = {
+  comment: string
+}
