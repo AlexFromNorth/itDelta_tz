@@ -59,38 +59,46 @@ const Modal: React.FC<ModalProps> = ({ onClose, currentModal }) => {
         className="bg-white rounded-lg px-6 w-full flex flex-col mx-8 md:w-1/2 xl:w-1/3 "
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={image?.largeImage}
-          alt={`Image ${image?.id}`}
-          className="my-6 w-full h-auto rounded-2xl shadow-xl"
-        />
+        {loading ? (
+          <p className="h-[50vh]">Загрузка...</p>
+        ) : error ? (
+          <p className="h-[50vh]">Ошибка: {error}</p>
+        ) : (
+          <>
+            <img
+              src={image?.largeImage}
+              alt={`Image ${image?.id}`}
+              className="my-6 w-full h-auto rounded-2xl shadow-xl"
+            />
 
-        <p className="mt-0">Comment</p>
+            <p className="mt-0">Comment</p>
 
-        <textarea
-          ref={textareaRef}
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          placeholder="Enter your comment"
-          className="my-2 p-2 border rounded w-full h-24"
-        />
-        <p className="text-grey">Write a few sentences about the photo.</p>
-        <button
-          className="my-4 mx-auto bg-darkBlue text-white py-2 px-4 rounded w-min"
-          onClick={handleCommentSubmit}
-        >
-          Save
-        </button>
+            <textarea
+              ref={textareaRef}
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              placeholder="Enter your comment"
+              className="my-2 p-2 border rounded w-full h-24"
+            />
+            <p className="text-grey">Write a few sentences about the photo.</p>
+            <button
+              className="my-4 mx-auto bg-darkBlue text-white py-2 px-4 rounded w-min"
+              onClick={handleCommentSubmit}
+            >
+              Save
+            </button>
 
-        <p className="">Comments</p>
-        <ul className="mb-6 text-black">
-          {image?.comments.map((el: Comment, index: number) => (
-            <li key={index} className="my-2">
-              <span>{el.author}: </span>
-              <span>{el.text} </span>
-            </li>
-          ))}
-        </ul>
+            <p className="">Comments</p>
+            <ul className="mb-6 text-black">
+              {image?.comments.map((el: Comment, index: number) => (
+                <li key={index} className="my-2">
+                  <span>{el.author}: </span>
+                  <span>{el.text} </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </div>
   );
