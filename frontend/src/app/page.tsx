@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { getImages } from "../../api/getImages";
@@ -8,7 +8,9 @@ import { sendComment } from "../../api/sendComment";
 import Modal from "../../components/Modal";
 
 export default function Home() {
-  const id =5
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentModal, setCurrentModal] = useState(0);
 
   const dispatch = useDispatch<AppDispatch>();
   const { images, loading, error } = useSelector(
@@ -24,28 +26,17 @@ export default function Home() {
 
   return (
     <div className="grid grid-cols-3 gap-4 p-8">
-      <Modal/>
-      {/* {images.map((el) => (
+      {/* <button onClick={() => setIsOpen(true)}>Открыть модалку</button> */}
+      {isOpen && <Modal onClose={() => setIsOpen(false)} currentModal={currentModal} />}
+      {images.map((el) => (
         <img
           key={el.id}
           src={el.image}
           alt={`Image ${el.id}`}
           className="w-full h-auto"
+          onClick={() => (setCurrentModal(el.id), setIsOpen(true))}
         />
-      ))} */}
-
-      <button
-        onClick={() =>
-          dispatch(
-            sendComment({
-              id: id,
-              comment: { id, author: "User", text: "Your comment" },
-            })
-          )
-        }
-      >
-        Click me
-      </button>
+      ))}
     </div>
   );
 }

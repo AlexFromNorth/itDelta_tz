@@ -41,4 +41,9 @@ export interface ProvidersProps {
   children: ReactNode; 
 }
 
+export interface ModalProps {
+  onClose: () => void;
+  currentModal: number;
+}
+
 // export type CartElement = (el: Element) => ReactElement;
