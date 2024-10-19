@@ -14,7 +14,7 @@ export const sendComment = createAsyncThunk(
     try {
       await axios.post(
         `http://test-backend.itdelta.agency/api/image/${id}/comments`,
-        comment
+        {comment: comment.text}
       );
       return { ...comment, id: comment.id };
       // return data;

@@ -30,9 +30,6 @@ const Modal = () => {
             return (
               <li key={index}>
                 <p>{el.text}</p>
-                {/* костыль из-за особенностей построения апи */}
-                {/*@ts-ignore}*/}
-                <p>{el?.comment}</p>
               </li>
             );
           })}
@@ -43,9 +40,7 @@ const Modal = () => {
           dispatch(
             sendComment({
               id: id,
-              // костыль из-за особенностей построения апи
-              //@ts-ignore
-              comment: { comment: "Your comment" },
+              comment: { id, author: "User", text: "Your comment" },
             })
           )
         }

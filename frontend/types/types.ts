@@ -42,9 +42,3 @@ export interface ProvidersProps {
 }
 
 // export type CartElement = (el: Element) => ReactElement;
-
-
-
-export type Crutch = {
-  comment: string
-}
