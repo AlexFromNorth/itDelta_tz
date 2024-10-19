@@ -51,12 +51,12 @@ const Modal: React.FC<ModalProps> = ({ onClose, currentModal }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center"
+      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center text-lightPrimary"
       onClick={handleOutsideClick}
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-lg px-6 w-full mx-8 md:w-1/2 lg:w-1/3 flex flex-col"
+        className="bg-white rounded-lg px-6 w-full flex flex-col mx-8 md:w-1/2 xl:w-1/3 "
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -71,19 +71,19 @@ const Modal: React.FC<ModalProps> = ({ onClose, currentModal }) => {
           ref={textareaRef} 
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
-          placeholder="Введите ваш комментарий"
+          placeholder="Enter your comment"
           className="my-2 p-2 border rounded w-full h-24"
         />
-        <p>Write a few sentences about the photo.</p>
+        <p className="text-grey">Write a few sentences about the photo.</p>
         <button
-          className="my-4 mx-auto bg-blue-800 text-white py-2 px-4 rounded w-min"
+          className="my-4 mx-auto bg-darkBlue text-white py-2 px-4 rounded w-min"
           onClick={handleCommentSubmit}
         >
           Save
         </button>
 
         <p className="">Comments</p>
-        <ul className="mb-6">
+        <ul className="mb-6 text-black">
           {image?.comments.map((el: Comment, index: number) => (
             <li key={index} className="my-2">
               <span>{el.author}: </span>

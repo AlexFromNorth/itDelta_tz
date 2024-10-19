@@ -17,7 +17,6 @@ export const sendComment = createAsyncThunk(
         {comment: comment.text}
       );
       return { ...comment, id: comment.id };
-      // return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
