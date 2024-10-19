@@ -1,4 +1,4 @@
-# Проект [IT-Delta](https://github.com/AlexFromNorth/itDelta_tz.git) | Frontend / Gulp / SCSS
+# Проект [IT-Delta](https://github.com/AlexFromNorth/itDelta_tz.git) | Frontend / NEXT / TAILWIND / TS
 
 ### 📜 Описание:
 Одностраничное приложение c адаптивной версткой и модальным окном собранный на `Vite` при использование Next, Tailwind. Осуществляет запрос на внешний апи.
