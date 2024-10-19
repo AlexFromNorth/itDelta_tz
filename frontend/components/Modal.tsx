@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, currentModal }) => {
     (state: RootState) => state.image
   );
   const modalRef = useRef<HTMLDivElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null); 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     dispatch(getImage(id));
@@ -68,7 +68,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, currentModal }) => {
         <p className="mt-0">Comment</p>
 
         <textarea
-          ref={textareaRef} 
+          ref={textareaRef}
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           placeholder="Enter your comment"

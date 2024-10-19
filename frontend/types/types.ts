@@ -36,14 +36,11 @@ export type CommentsState = {
   error: string | null;
 };
 
-
 export interface ProvidersProps {
-  children: ReactNode; 
+  children: ReactNode;
 }
 
 export interface ModalProps {
   onClose: () => void;
   currentModal: number;
 }
-
-// export type CartElement = (el: Element) => ReactElement;

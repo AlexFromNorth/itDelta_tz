@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ImagesState } from "../types/types";
 import { getImages } from "../api/getImages";
 
-
 const initialState: ImagesState = {
   images: [],
   loading: false,

@@ -9,12 +9,11 @@ export const sendComment = createAsyncThunk(
     { id, comment }: { id: number; comment: Comment },
     { rejectWithValue, dispatch }
   ) => {
-
     dispatch(addComment(comment));
     try {
       await axios.post(
         `http://test-backend.itdelta.agency/api/image/${id}/comments`,
-        {comment: comment.text}
+        { comment: comment.text }
       );
       return { ...comment, id: comment.id };
     } catch (error: any) {
